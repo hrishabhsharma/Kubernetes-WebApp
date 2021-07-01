@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>k8s WebApp</title>
+
+   <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"></link>
+   <link href="Custom-CSS/k8scss.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body>
+    <div class="container-fluid">
+      <!-- header text -->
+      <h1 class="row justify-content-center pt-3 pb-2">Manage Kubernetes WebApp<h1>
+      <!-- box containers --> 
+      <div id="box" class="row">
+         <!-- pod image -->
+         <div class="col-lg-2 p-0 d-flex align-items-center">
+            <img class="pod-image" src="photo/pod.jpg" alt="pod">
+         </div>
+         <!-- box 1  -->
+         <div id="main" class="col-sm-6 col-md-3 col-lg-3">
+            <h3 class="row justify-content-center pb-3">Pod Area</h3>
+            <div class="row justify-content-center mb-2">
+               <select class="form-control" id="pod_usecase" onchange="k8s_onchange_pod();">
+                  <option>--- Select Your Usecase ---</option>
+                  <option value="Launch">Launch</option>
+                  <option value="Delete">Delete</option>
+               </select>
+            </div>
+            <div class="row justify-content-center">
+               <input id="pod_name" class="form-control hide mb-2" placeholder="Enter Pod Name"/>
+            </div>
+            <div class="row justify-content-center">
+               <input id="pod_image_name" class="form-control hide mb-2" placeholder="Enter Image Name"/>
+            </div>
+            <button class="btn btn-success btn-sm mt-2" onclick="k8s_pod()">Execute</button>
+         </div>
+         <!-- extra spaceing -->
+         <div class="col-lg-2"></div>
+         <!-- deployment image -->
+         <div class="col-lg-2 p-0 d-flex align-items-center">
+            <img class="deployment-image" src="photo/deployment.jpg" alt="deployment">
+         </div>
+         <!-- box 2 -->
+         <div id="main" class="col-sm-6 col-md-3 col-lg-3">
+            <h3 class="row justify-content-center pb-3">Deployment Area</h3>
+            <div class="row justify-content-center mb-2">
+               <select class="form-control" id="deployment_usecase" onchange="k8s_onchange_deployment();">
+                  <option>--- Select Your Usecase ---</option>
+                  <option value="Launch">Launch</option>
+                  <option value="Scale">Scale</option>
+                  <option value="Expose">Expose</option>
+                  <option value="Delete">Delete</option>
+               </select>
+            </div>
+            <div class="row justify-content-center">
+               <input id="deployment_name" class="form-control hide mb-2" placeholder="Enter Deployment Name"/>
+            </div>
+            <div class="row justify-content-center">
+               <input id="deployment_image_name" class="form-control hide mb-2" placeholder="Enter Image Name"/>
+            </div>
+            <div class="row justify-content-center">
+               <input id="deployment_replica_number" class="form-control hide mb-2" placeholder="Enter Replica Number"/>
+            </div>
+            <div class="row justify-content-center">
+               <input id="deployment_expose_port_number" class="form-control hide mb-2" placeholder="Enter Port Number"/>
+            </div>
+            <button class="btn btn-success btn-sm mt-2" onclick="k8s_deployment()">Execute</button>
+         </div>
+      </div>
+      <div class="row">
+         <!-- output area -->
+
+	  <div id="main" class="col-sm-12 col-md-6 col-lg-8"> 
+	    <h2 class="row justify-content-center pb-2">Output Area</h2>
+            <pre style="display: grid;">
+	     <div id="output_box_area" class="row justify-content-center" style="color:black;">
+		 <p>Welcome to Kubernetes WebApp!</p>
+	     </div>
+	   </pre>
+          </div>
+         <!-- show buttons -->
+         <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="row mt-5">
+               <div class="col-4">
+                  <button class="btn btn-info btn-sm mt-5 ml-3" onclick="k8s_pod_show()">Show Pods</button>
+               </div>
+               <div class="col-4 p-0">
+                  <button class="btn btn-info btn-sm mt-5" onclick="k8s_deployment_show()">Show Deployment</button>
+               </div>
+               <div class="col-4">
+                  <button class="btn btn-info btn-sm mt-5" onclick="k8s_service_show()">Show Services</button>
+               </div>
+            </div>
+            <div class="row mt-3 mb-2 justify-content-center">
+               <h3>Describe Area</h3>
+            </div>
+            <div class="row justify-content-center mb-2">
+               <select class="form-control" id="describe_usecase" onchange="k8s_onchange_describe();">
+                  <option>--- Select Your Resource ---</option>
+                  <option value="Pod">Pod</option>
+                  <option value="Deployment">Deployment</option>
+                  <option value="Service">Service</option>
+               </select>
+            </div>
+            <div class="row justify-content-center">
+               <input id="describe_resource_name" class="form-control mb-2 hide" placeholder="Enter Resource Name"/>
+            </div>
+            <div class="row justify-content-center">
+               <button class="btn btn-info btn-md mt-2" onclick="k8s_describe()">Display</button>
+            </div>
+            <div class="row justify-content-center">
+               <button class="btn btn-danger btn-md mt-4" onclick="k8s_delete()">Delete All Resource</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+<script type="text/javascript" src="Custom-Script/customk8s.js"></script>
+</html>
+
+
+
